@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "pyhub.mcptools": {
+      "command": "/Users/로그인유저/mcptools/pyhub.mcptools/pyhub.mcptools",
+      "args": [
+        "run",
+        "stdio"
+      ]
+    },
+    "jetbrains": {
+      "command": "npx",
+      "args": ["-y", "@jetbrains/mcp-proxy"],
+      "env": {
+        "LOG_ENABLED": "true"
+      }
+    },
+    "mymcp.excel": {
+      "command": "python",
+      "args": [
+        "tools/desktop.py"
+      ],
+      "env": {
+        "MCP_SERVER_URL": "http://localhost:8000/mcp",
+        "MCP_API_KEY": "your_secret_api_key"
+      }
+    },
+    "mymcp.filesystem": {
+      "command": "python",
+      "args": [
+        "tools/file_server.py"
+      ],
+      "env": {
+        "MCP_SERVER_URL": "http://localhost:8001/mcp",
+        "MCP_API_KEY": "your_file_server_key"
+      }
+    }
+  }
+}

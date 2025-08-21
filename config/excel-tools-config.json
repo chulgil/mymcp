@@ -1,0 +1,184 @@
+{
+  "excel_tools": {
+    "server_config": {
+      "host": "localhost",
+      "port": 8000,
+      "endpoint": "/mcp",
+      "protocol": "http"
+    },
+    "tools": {
+      "excel_read": {
+        "description": "Excel 파일을 읽어서 내용을 분석합니다",
+        "parameters": {
+          "file_path": {
+            "type": "string",
+            "required": true,
+            "description": "읽을 Excel 파일의 경로"
+          },
+          "sheet_name": {
+            "type": "string",
+            "required": false,
+            "description": "읽을 워크시트 이름 (기본값: 활성 워크시트)"
+          },
+          "range": {
+            "type": "string",
+            "required": false,
+            "description": "읽을 셀 범위 (예: A1:D10)"
+          }
+        },
+        "examples": [
+          "Excel 파일 'sales_data.xlsx'를 읽어서 내용을 요약해줘",
+          "data.xlsx의 Sheet1에서 A1부터 D100까지의 데이터를 읽어줘"
+        ]
+      },
+      "excel_write": {
+        "description": "새로운 Excel 파일을 생성하거나 기존 파일을 수정합니다",
+        "parameters": {
+          "file_path": {
+            "type": "string",
+            "required": true,
+            "description": "저장할 Excel 파일의 경로"
+          },
+          "data": {
+            "type": "array",
+            "required": true,
+            "description": "저장할 데이터 (2차원 배열)"
+          },
+          "sheet_name": {
+            "type": "string",
+            "required": false,
+            "description": "워크시트 이름 (기본값: Sheet1)"
+          }
+        },
+        "examples": [
+          "새로운 Excel 파일을 만들고 월별 판매 데이터를 저장해줘",
+          "기존 파일에 새로운 행을 추가해줘"
+        ]
+      },
+      "excel_chart": {
+        "description": "Excel 데이터로 차트를 생성합니다",
+        "parameters": {
+          "file_path": {
+            "type": "string",
+            "required": true,
+            "description": "차트를 생성할 Excel 파일 경로"
+          },
+          "chart_type": {
+            "type": "string",
+            "required": true,
+            "description": "차트 유형 (bar, line, pie, scatter)"
+          },
+          "data_range": {
+            "type": "string",
+            "required": true,
+            "description": "차트 데이터 범위 (예: A1:D10)"
+          },
+          "title": {
+            "type": "string",
+            "required": false,
+            "description": "차트 제목"
+          }
+        },
+        "examples": [
+          "월별 판매량을 막대 차트로 만들어줘",
+          "제품별 매출을 파이 차트로 시각화해줘"
+        ]
+      },
+      "excel_formula": {
+        "description": "Excel 수식을 자동으로 생성합니다",
+        "parameters": {
+          "file_path": {
+            "type": "string",
+            "required": true,
+            "description": "수식을 적용할 Excel 파일 경로"
+          },
+          "formula_type": {
+            "type": "string",
+            "required": true,
+            "description": "수식 유형 (BMI, VLOOKUP, SUM, AVERAGE 등)"
+          },
+          "target_range": {
+            "type": "string",
+            "required": true,
+            "description": "수식을 적용할 셀 범위"
+          },
+          "parameters": {
+            "type": "object",
+            "required": false,
+            "description": "수식에 필요한 추가 매개변수"
+          }
+        },
+        "examples": [
+          "키와 몸무게 데이터에 BMI 수식을 자동으로 생성해줘",
+          "VLOOKUP 수식을 사용해서 제품 정보를 연결해줘"
+        ]
+      },
+      "excel_pivot": {
+        "description": "Excel 피벗 테이블을 생성합니다",
+        "parameters": {
+          "file_path": {
+            "type": "string",
+            "required": true,
+            "description": "피벗 테이블을 생성할 Excel 파일 경로"
+          },
+          "data_range": {
+            "type": "string",
+            "required": true,
+            "description": "피벗 테이블 데이터 범위"
+          },
+          "row_fields": {
+            "type": "array",
+            "required": false,
+            "description": "행 필드로 사용할 열들"
+          },
+          "column_fields": {
+            "type": "array",
+            "required": false,
+            "description": "열 필드로 사용할 열들"
+          },
+          "value_fields": {
+            "type": "array",
+            "required": true,
+            "description": "값 필드와 집계 함수 (예: [\"Sales:sum\", \"Quantity:count\"])"
+          }
+        },
+        "examples": [
+          "제품별, 월별로 매출을 집계하는 피벗 테이블을 만들어줘",
+          "지역별 판매량과 매출을 분석하는 피벗 테이블을 생성해줘"
+        ]
+      }
+    },
+    "file_formats": {
+      "supported": [".xlsx", ".xls", ".csv"],
+      "preferred": ".xlsx",
+      "max_file_size": "100MB"
+    },
+    "chart_types": {
+      "supported": [
+        "bar", "line", "pie", "scatter", "area", "doughnut",
+        "radar", "surface", "bubble", "stock"
+      ],
+      "default": "bar"
+    },
+    "formula_templates": {
+      "BMI": "=C2/(B2/100)^2",
+      "VLOOKUP": "=VLOOKUP(lookup_value, table_array, col_index_num, FALSE)",
+      "SUM": "=SUM(range)",
+      "AVERAGE": "=AVERAGE(range)",
+      "COUNT": "=COUNT(range)",
+      "IF": "=IF(condition, value_if_true, value_if_false)"
+    },
+    "security": {
+      "allowed_paths": [
+        "~/Documents",
+        "~/Desktop",
+        "~/Downloads",
+        "./data",
+        "./reports"
+      ],
+      "blocked_extensions": [".exe", ".bat", ".cmd", ".ps1"],
+      "max_rows": 10000,
+      "max_columns": 100
+    }
+  }
+}
