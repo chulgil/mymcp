@@ -14,7 +14,7 @@
         "LOG_ENABLED": "true"
       }
     },
-    "mymcp": {
+    "mymcp-desktop": {
       "command": "python",
       "args": ["tools/desktop.py"]
     }

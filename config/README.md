@@ -21,8 +21,8 @@
 5. 원하는 설정 파일 내용을 복사하여 붙여넣기
 
 ### **설정 파일 설명**
-- **`claude-mcp-config.json`**: 모든 MyMCP 도구를 통합 제공하는 설정
-  - Excel, 파일시스템, HWPX 등 모든 도구 포함
+- **`claude-mcp-config.json`**: MyMCP 데스크톱 통합 서버 설정
+  - Excel, 파일시스템, HWPX 등 모든 도구를 통합 제공
   - 하나의 Python 프로세스로 모든 기능 실행
 
 ## ⚙️ 설정 파일 구조
@@ -31,7 +31,7 @@
 ```json
 {
   "mcpServers": {
-    "mymcp": {
+    "mymcp-desktop": {
       "command": "python",
       "args": ["tools/desktop.py"]
     }
