@@ -92,8 +92,7 @@ python tools/desktop.py
 
 ### ⚙️ 설정 파일 (config/)
 - **[설정 파일 가이드](config/README.md)** - Claude Desktop MCP 설정 및 Excel 도구 설정
-- **[Claude MCP 설정 (전체)](config/claude-mcp-config.json)** - Excel + 파일시스템 도구 설정
-- **[Claude MCP 설정 (간단)](config/claude-mcp-config-simple.json)** - Excel 도구만 설정
+- **[Claude MCP 설정](config/claude-mcp-config.json)** - 모든 MyMCP 도구 통합 설정
 - **[Excel 도구 설정](config/excel-tools-config.json)** - Excel 도구 매개변수 및 설정 정의
 
 ### 🚀 실행 스크립트 (scripts/)

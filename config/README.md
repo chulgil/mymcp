@@ -20,9 +20,10 @@
 4. "MCP: Add Server" 선택
 5. 원하는 설정 파일 내용을 복사하여 붙여넣기
 
-### **설정 파일 선택 가이드**
-- **초보자**: `claude-mcp-config-simple.json` (Excel 도구만)
-- **고급 사용자**: `claude-mcp-config.json` (모든 도구)
+### **설정 파일 설명**
+- **`claude-mcp-config.json`**: 모든 MyMCP 도구를 통합 제공하는 설정
+  - Excel, 파일시스템, HWPX 등 모든 도구 포함
+  - 하나의 Python 프로세스로 모든 기능 실행
 
 ## ⚙️ 설정 파일 구조
 
@@ -30,29 +31,15 @@
 ```json
 {
   "mcpServers": {
-    "mymcp.excel": {
+    "mymcp": {
       "command": "python",
-      "args": ["tools/desktop.py"]
-    },
-    "mymcp.filesystem": {
-      "command": "python", 
       "args": ["tools/desktop.py"]
     }
   }
 }
 ```
 
-### **claude-mcp-config-simple.json**
-```json
-{
-  "mcpServers": {
-    "mymcp.excel": {
-      "command": "python",
-      "args": ["tools/desktop.py"]
-    }
-  }
-}
-```
+**참고**: 간단한 설정 파일은 제거되었습니다. `claude-mcp-config.json` 하나로 모든 기능을 사용할 수 있습니다.
 
 ## 🔧 문제 해결
 
