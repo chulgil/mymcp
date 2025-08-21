@@ -1,0 +1,7 @@
+# macOS용 MCP 서버 패키지
+fastmcp>=2.11.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# macOS는 기본 Python 라이브러리만 사용
+# olefile 불필요 (한글 문서 지원 안함)

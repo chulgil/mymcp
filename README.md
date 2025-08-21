@@ -203,3 +203,67 @@ python tools/desktop.py
 
 **MyMCP**로 로컬 컴퓨터의 모든 도구를 AI와 함께 사용해보세요! 🚀
 
+# MyMCP - 플랫폼별 MCP 서버
+
+## 개요
+macOS와 Windows 환경에서 실행되는 MCP (Model Context Protocol) 서버입니다.
+
+## 프로젝트 구조
+```
+tools/
+├── mac/                    # macOS용 MCP 서버
+│   ├── desktop.py         # macOS MCP 서버
+│   ├── requirements.txt   # macOS 의존성
+│   └── README.md         # macOS 사용법
+└── windows/               # Windows용 MCP 서버
+    ├── desktop.py         # Windows MCP 서버
+    ├── requirements.txt   # Windows 의존성
+    └── README.md         # Windows 사용법
+```
+
+## 플랫폼별 특징
+
+### macOS (`tools/mac/`)
+- **경로**: `~/Desktop/mymcp-test/`
+- **특징**: macOS 경로 구조와 권한 시스템에 최적화
+- **기능**: 파일/폴더 관리, 시스템 정보 조회
+- **요구사항**: Python 3.11+, macOS 10.15+
+
+### Windows (`tools/windows/`)
+- **경로**: `c:/test/`
+- **특징**: Windows 경로 구조와 파일 시스템에 최적화
+- **기능**: 파일/폴더 관리, 시스템 정보 조회, **한글 문서(.hwp) 읽기**
+- **요구사항**: Python 3.11+, Windows 10+, olefile 라이브러리
+
+## 설치 및 실행
+
+### macOS
+```bash
+cd tools/mac
+pip install -r requirements.txt
+python3 desktop.py
+```
+
+### Windows
+```cmd
+cd tools\windows
+pip install -r requirements.txt
+python desktop.py
+```
+
+## 지원 도구
+- `create_folder`: 폴더 생성
+- `list_folders`: 폴더 목록 조회
+- `create_file`: 파일 생성
+- `read_file`: 파일 읽기
+- `get_system_info`: 시스템 정보 조회
+- `read_hwp`: 한글 문서 읽기 (Windows 전용)
+
+## 기술 스택
+- **FastMCP**: 현대적이고 빠른 MCP 서버 구현
+- **Python 3.11+**: 최신 Python 기능 활용
+- **플랫폼별 최적화**: 각 OS에 맞는 경로와 기능 제공
+
+## 라이선스
+MIT License
+
